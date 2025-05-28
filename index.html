@@ -100,6 +100,17 @@
       border-radius: 50%;
     }
 
+    .hero-image:hover {
+      box-shadow: 0 0 25px #bb86fc;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+    }
+    .hero-image img:hover {
+      transition: transform 0.3s ease;
+      transform: translateY(5px);
+    }
+
     .hero-text {
       flex: 1 1 300px;
       color: #ddd;
@@ -202,6 +213,23 @@
 
     .card button:hover, .project-content button:hover {
       background-color: #bb86fc;
+    }
+
+    button, .card button, .project-content button {
+      background-color: #9b59b6;
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 15px transparent;
+    }
+
+    button:hover, .card button:hover, .project-content button:hover {
+      background-color: #bb86fc;
+      box-shadow: 0 0 15px #bb86fc;
     }
 
     /* Cross-functional team section */
@@ -321,6 +349,8 @@
 
     footer .socials a:hover {
       color: #bb86fc;
+      filter: drop-shadow(0 0 8px #bb86fc);
+      transition: color 0.3s ease, filter 0.3s ease;
     }
 
     /* Responsive */
@@ -346,6 +376,8 @@
       <li><a href="#">Home</a></li>
       <li><a href="static/Vishnu final.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
       <li><a href="contact.html">contact</a></li>
+      <li><a href="https://www.linkedin.com/in/vishnu-r-dev">LinkedIn</a></li>
+      <li><a href="https://github.com/vishnu2006034">Github</a></li>
     </ul>
   </nav>
 
@@ -384,8 +416,9 @@
       <!-- <img src="static/images/icons/html5.svg" alt="HTML5" title="HTML5" /> -->
       
     <!-- </section> -->
-
+    <h1>Projects</h1>
     <section class="featured-projects">
+      
       <div class="project-card">
         <div class="project-image" style="background-image: url('static/project1.png');"></div>
         <div class="project-content">
@@ -411,6 +444,34 @@
         </div>
       </div>
     </section>
+
+    <section class="certificates">
+      <h2>Certificates</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>NPTEL Certification – Python for Data Science</h3>
+          <p>Successfully completed the "Python for Data Science" course offered by the National Programme on Technology Enhanced Learning (NPTEL), a joint initiative of the IITs and IISc. This course provided a comprehensive introduction to Python programming with a focus on data science applications. Key topics covered included:</p>
+          <a href="static/Python for Data Science.pdf" target="_blank" rel="noopener noreferrer"><button>View Certificate</button></a>
+        </div>
+        <div class="card">
+          <h3>Runner-Up – Data Dash </h3>
+          <p>Awarded the Runner-Up position in the Data Dash analytics competition, a data-driven event focused on solving real-world problems using data science and analytical tools. The competition involved:
+
+Data cleaning, preprocessing, and exploratory data analysis
+
+Visualizing data and communicating results effectively
+
+ effective use of Python and data science libraries (such as Pandas, NumPy, and Matplotlib), and the ability to derive actionable insights from complex datasets.</p>
+          <a href="static/datadash.pdf" target="_blank" rel="noopener noreferrer"><button>View Certificate</button></a>
+        </div>
+        <div class="card">
+          <h3>Hackathons</h3>
+          <p>Participated in Hackathons, contributing to a team project involving rapid prototyping and problem-solving using technologies like [e.g., Python, Flask, Frontend]. Gained hands-on experience in collaborative development and real-world tech challenges.</p>
+          <a href="static/hackathons.pdf" target="_blank" rel="noopener noreferrer"><button>View Certificate</button></a>
+        </div>
+      </div>
+    </section>
+
     <div style="text-align:center; margin: 2rem 0;">
       <a href="contact.html"><button class="blinking" style="background-color: #9b59b6; border: none; color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; cursor: pointer; font-weight: 700; font-size: 1rem; transition: background-color 0.3s ease;">Contact Me</button></a>
     </div>

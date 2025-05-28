@@ -96,10 +96,30 @@
       font-weight: 700;
       text-decoration: none;
       transition: background-color 0.3s ease;
+      box-shadow: 0 0 15px transparent;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     a.button:hover {
       background-color: #bb86fc;
+      box-shadow: 0 0 15px #bb86fc;
+    }
+
+    button, .card button, .project-content button {
+      background-color: #9b59b6;
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 15px transparent;
+    }
+
+    button:hover, .card button:hover, .project-content button:hover {
+      background-color: #bb86fc;
+      box-shadow: 0 0 15px #bb86fc;
     }
 
     footer {
@@ -128,6 +148,8 @@
 
     footer .socials a:hover {
       color: #bb86fc;
+      filter: drop-shadow(0 0 8px #bb86fc);
+      transition: color 0.3s ease, filter 0.3s ease;
     }
 
     /* Responsive */
@@ -144,6 +166,8 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="static/Vishnu final.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
       <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://www.linkedin.com/in/vishnu-r-dev">LinkedIn</a></li>
+      <li><a href="https://github.com/vishnu2006034">Github</a></li>
     </ul>
   </nav>
 
