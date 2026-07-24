@@ -18,6 +18,24 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #130427;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3a1a5a;
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #9b59b6;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: #130427;
@@ -28,6 +46,7 @@
       flex-direction: column;
       align-items: center;
       padding: 0 1rem 3rem;
+      overflow-x: hidden;
     }
 
     nav {
@@ -37,11 +56,16 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      background-color: #1a0f3a;
+      background-color: rgba(26, 15, 58, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom-left-radius: 1rem;
+      border-bottom-right-radius: 1rem;
     }
 
     .logo {
@@ -65,10 +89,26 @@
       font-weight: 600;
       font-size: 1rem;
       transition: color 0.3s ease;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #9b59b6;
+      transition: width 0.3s ease;
     }
 
     nav a:hover {
       color: #9b59b6;
+    }
+
+    nav a:hover::after {
+      width: 100%;
     }
 
     main {
@@ -85,34 +125,40 @@
       flex-wrap: wrap;
     }
 
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
     .hero-image {
       flex: 0 0 150px;
       width: 150px;
       height: 150px;
       border-radius: 50%;
       background: radial-gradient(circle at center, #9b59b6 0%, #130427 70%);
-      box-shadow: 0 0 20px #9b59b6;
+      box-shadow: 0 0 25px rgba(155, 89, 182, 0.6);
       display: flex;
       justify-content: center;
       align-items: center;
       overflow: hidden;
+      animation: float 4s ease-in-out infinite;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
     .hero-image img {
       width: 100%;
       height: auto;
       border-radius: 50%;
+      transition: transform 0.3s ease;
     }
 
     .hero-image:hover {
-      box-shadow: 0 0 25px #bb86fc;
-      border-radius: 50%;
+      box-shadow: 0 0 40px rgba(187, 134, 252, 0.8);
       cursor: pointer;
-      transition: box-shadow 0.3s ease;
     }
-    .hero-image img:hover {
-      transition: transform 0.3s ease;
-      transform: translateY(5px);
+    .hero-image:hover img {
+      transform: scale(1.1);
     }
 
     .hero-text {
@@ -128,7 +174,9 @@
     }
 
     .hero-text h2 span {
-      color: #9b59b6;
+      background: linear-gradient(90deg, #9b59b6, #bb86fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       font-weight: 700;
     }
 
@@ -137,13 +185,33 @@
       font-weight: 700;
       font-size: 2.5rem;
       margin-bottom: 0.5rem;
-      color: #eee;
+      background: linear-gradient(135deg, #eee 0%, #bbb 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero-text p {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+      margin-bottom: 1.2rem;
+      max-width: 650px;
+      line-height: 1.7;
+      color: #ccc;
+      text-align: justify;
+    }
+    .highlight {
+      color: #bb86fc;
+      font-weight: 600;
+    }
+    .hero-quote {
+      margin-top: 1.5rem;
+      border-left: 4px solid #9b59b6;
+      font-style: italic;
+      color: #ddd;
+      font-size: 1.1rem;
       max-width: 600px;
+      background: rgba(155, 89, 182, 0.1);
+      padding: 1rem;
+      border-radius: 0 0.5rem 0.5rem 0;
     }
 
     .hero-text p a {
@@ -175,20 +243,25 @@
     }
 
     .card {
-      background: linear-gradient(135deg, #3a1a5a, #1a0f3a);
+      background: rgba(58, 26, 90, 0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border-radius: 1rem;
       padding: 1.5rem;
-      box-shadow: 0 0 15px #9b59b6;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       color: #ddd;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       min-height: 150px;
-      transition: box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
     .card:hover {
-      box-shadow: 0 0 25px #bb86fc;
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(155, 89, 182, 0.4);
+      border-color: rgba(187, 134, 252, 0.3);
     }
 
     .card h3 {
@@ -203,37 +276,28 @@
       margin-bottom: 1rem;
     }
 
-      .card button, .project-content button {
-      align-self: flex-start;
-      background-color: #9b59b6;
-      border: none;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-    }
-
-    .card button:hover, .project-content button:hover {
-      background-color: #bb86fc;
-    }
-
     button, .card button, .project-content button {
-      background-color: #9b59b6;
+      align-self: flex-start;
+      background: linear-gradient(135deg, #9b59b6, #7a3a96);
       border: none;
       color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 2rem;
       cursor: pointer;
       font-weight: 600;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 0 15px transparent;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(155, 89, 182, 0.3);
     }
 
     button:hover, .card button:hover, .project-content button:hover {
-      background-color: #bb86fc;
-      box-shadow: 0 0 15px #bb86fc;
+      background: linear-gradient(135deg, #bb86fc, #9b59b6);
+      box-shadow: 0 6px 20px rgba(187, 134, 252, 0.5);
+      transform: translateY(-2px);
+    }
+
+    button:active, .card button:active, .project-content button:active {
+      transform: scale(0.95);
+      box-shadow: 0 2px 10px rgba(187, 134, 252, 0.3);
     }
 
     /* Cross-functional team section */
@@ -288,20 +352,25 @@
       justify-content: center;
     }
 
-      .project-card {
-      background: linear-gradient(135deg, #3a1a5a, #1a0f3a);
+    .project-card {
+      background: rgba(58, 26, 90, 0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border-radius: 1rem;
-      box-shadow: 0 0 15px #9b59b6;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       color: #ddd;
       padding: 1rem;
       width: 300px;
       display: flex;
       flex-direction: column;
-      transition: box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
     .project-card:hover {
-      box-shadow: 0 0 25px #bb86fc;
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(155, 89, 182, 0.4);
+      border-color: rgba(187, 134, 252, 0.3);
     }
 
     .project-image {
@@ -372,13 +441,24 @@
       }
     }
 
-    @keyframes blinking-glow {
-      0% { box-shadow: 0 0 5px #9b59b6; }
-      50% { box-shadow: 0 0 20px #bb86fc; }
-      100% { box-shadow: 0 0 5px #9b59b6; }
+    @keyframes pulse-glow {
+      0% { box-shadow: 0 0 0 0 rgba(187, 134, 252, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(187, 134, 252, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(187, 134, 252, 0); }
     }
-    .blinking {
-      animation: blinking-glow 2s infinite ease-in-out;
+    .pulse {
+      animation: pulse-glow 2s infinite;
+    }
+
+    /* Scroll Animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
   <!-- Google Analytics -->
@@ -418,26 +498,30 @@
   </nav>
 
   <main>
-    <section class="hero" id="about">
+    <section class="hero fade-up" id="about">
         <div class="hero-image">
           <img src="./static/myimg.jpg" alt="Vishnu R" />
         </div>
       <div class="hero-text">
-        <h2>Hello! I Am <span>Vishnu R</span></h2>
+        <h2>Hello! I Am <span>Vishnu R</span>🤗</h2>
         
-        <h1>I'm a Web Developer and RPA Explorer</h1>
-        <p>Currently, I'm a Final year B.Tech IT student at Jeppiaar Engineering College.</p>
-        <p>Backend Developer & RPA Engineer with a strong foundation in Python, Flask, and Data Analysis. I specialize in designing robust backend systems, automating repetitive workflows through RPA, and uncovering deep insights from complex datasets. Passionate about efficiency, I build software that optimizes performance and solves tangible business challenges.</p>
+        <h1>Backend Developer | Python Developer | Software Engineer</h1>
+        <p>I'm a final-year B.Tech Information Technology student passionate about backend engineering and software architecture.</p>
+        <p>Currently, I'm contributing to the development of a reusable <span class="highlight">CRUD Engine</span> and backend packages using <span class="highlight">Python</span> and <span class="highlight">Flask</span>, while gaining hands-on experience with modular architecture, design patterns, REST APIs, and scalable software development.</p>
+        <p>Beyond backend development, I enjoy exploring <span class="highlight">RPA</span>, data analysis, and automation to build solutions that improve productivity and solve real-world challenges.</p>
+        <blockquote class="hero-quote">
+          "I believe great software is not just built to work—it's built to scale, perform, and make an impact."
+        </blockquote>
     </section>
 
-    <section class="work-experience">
+    <section class="work-experience fade-up">
       <h2>Work Experience</h2>
       <div class="cards">
         <div class="card">
-          <h3>Qspider (Internship)</h3>
-          <p>Currently interning at Qspider, working on Web development and Placement Preparation.</p>
+          <h3>HOGC (Internship)</h3>
+          <p>Working on the development of a reusable CRUD engine package, focusing on scalable architecture and design pattern implementation.</p>
 
-          <a href="static/qspider.jpeg"><button>Learn More</button></a>
+          <a href="static/hogc.png"><button>Learn More</button></a>
         </div>
       </div>
       <!-- <br>
@@ -461,7 +545,7 @@
       
     <!-- </section> -->
     <h1>Projects</h1>
-    <section class="featured-projects">
+    <section class="featured-projects fade-up">
       <div class="project-card">
         <div class="project-image" style="background-image: url('static/project2.png');"></div>
         <div class="project-content">
@@ -505,7 +589,7 @@
       </div>
     </section>
 
-    <section class="certificates">
+    <section class="certificates fade-up">
       <h2>Certificates</h2>
       <div class="cards">
         <div class="card">
@@ -548,7 +632,7 @@ Visualizing data and communicating results effectively
     </section>
 
     <div style="text-align:center; margin: 2rem 0;">
-      <a href="contact.html"><button class="blinking" style="background-color: #9b59b6; border: none; color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; cursor: pointer; font-weight: 700; font-size: 1rem; transition: background-color 0.3s ease;">Contact Me</button></a>
+      <a href="contact.html"><button class="pulse" style="background: linear-gradient(135deg, #9b59b6, #7a3a96); border: none; color: white; padding: 0.75rem 1.5rem; border-radius: 2rem; cursor: pointer; font-weight: 700; font-size: 1rem; transition: background 0.3s ease, transform 0.2s ease;">Contact Me</button></a>
     </div>
 
 
@@ -654,6 +738,27 @@ Visualizing data and communicating results effectively
       background-color: #bb86fc;
     }
   </style>
+
+  <script>
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-up').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>
-
