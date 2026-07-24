@@ -276,8 +276,12 @@
       margin-bottom: 1rem;
     }
 
-    button, .card button, .project-content button {
+    .card > a, .project-content > a {
       align-self: flex-start;
+      text-decoration: none;
+    }
+
+    button, .card button, .project-content button {
       background: linear-gradient(135deg, #9b59b6, #7a3a96);
       border: none;
       color: white;
@@ -381,6 +385,12 @@
       margin-bottom: 1rem;
       background-size: cover;
       background-position: center;
+    }
+
+    .project-content {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
 
     .project-content h3 {
